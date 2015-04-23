@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<hr/>
+
+{% for note in notes %}
+        <!-- Page Features -->
+        <div class="row text-center">		
+            <div class="col-md-3 col-sm-6 hero-feature">
+                <div class="thumbnail">
+				
+                    <div class="caption">
+                        <h3>{{ note.title }}</h3>
+                        <p>{{ note.text }} </p>
+						<hr/>
+                        <p>
+                            <a href="edit/{{ note.key().id() }}" class="btn btn-default">Edit</a>  <a href="share/{{ note.key().id() }}" class="btn btn btn-default">Share</a>  <a href="delete/{{ note.key().id() }}" class="btn btn-default">Delete</a>
+                        </p>
+						<p style="line-height:10px">Created: {{ note.date.strftime('%Y-%m-%d')  }}</p>
+						<p style="line-height:10px">Status: {{ note.status }} </p>
+                    </div>
+                </div>
+            </div>
+{% endfor %}
+
+        </div>
+        <!-- /.row -->
+
+{% endblock content %}
